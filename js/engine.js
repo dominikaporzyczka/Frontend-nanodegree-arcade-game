@@ -85,9 +85,19 @@ var Engine = (function (global) {
                 (player.y + 100) < enemy.y + (enemy.height - 26) &&
                 player.y + (player.height - 30) > (enemy.y + 78)) {
                     
-                player.moveToDefault();
+                player.moveToDefault();  
+                showMessage();
             }
         }
+    }
+
+    const message = doc.createElement('p');
+    message.classList.add('message');
+
+    function showMessage() {
+        const messages = ['Oooops..', 'Try again!', 'Maybe next time..', 'Do not give up!', 'You are still awesome! Try again :)'];
+        message.textContent = messages[Math.floor(Math.random() * messages.length)];
+        doc.body.appendChild(message);
     }
 
     function update(dt) {

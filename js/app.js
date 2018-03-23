@@ -49,6 +49,10 @@ Player.prototype.update = function () {
     if (this.y < 60) {
         allEnemies = [];
         this.moveToDefault();
+
+        const messages = ['Good job!', 'Nice!', 'You are awesome!', 'Woooooo!', 'You win!!!'];
+        this.messageParagraph = document.querySelector('.message');
+        this.messageParagraph.textContent = messages[Math.floor(Math.random() * messages.length)];
     }
 }
 
