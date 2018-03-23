@@ -1,16 +1,30 @@
 // Enemies our player must avoid
 let allEnemies = [];
+const position = [60, 140, 220];
 
-class Enemy {
-    constructor() {
-        this.position = [60, 140, 220];
-        this.x = -100;
-        this.y = this.position[Math.floor(Math.random() * this.position.length)];
-        this.speed = (Math.random() * 4) + 2;
-    
-        this.sprite = 'images/enemy-bug.png';
+class Character {
+    constructor(x, y, sprite) {
+        this.x = x;
+        this.y = y;
         this.width = 101;
         this.height = 171;
+        this.sprite = sprite;
+    }
+
+    // Draw the character on the screen
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+}
+
+class Enemy extends Character {
+    constructor() {
+        super(
+            -100,
+            position[Math.floor(Math.random() * position.length)],
+            'images/enemy-bug.png');
+
+        this.speed = (Math.random() * 4) + 2;
     }
 
     // Update the enemy's position
@@ -18,20 +32,11 @@ class Enemy {
     update(dt) {
         this.x += this.speed;
     }
-
-    // Draw the enemy on the screen
-    render() {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    }
 }
 
-class Player {
+class Player extends Character {
     constructor() {
-        this.x = 200;
-        this.y = 380;
-        this.sprite = 'images/char-cat-girl.png';
-        this.width = 101;
-        this.height = 171;
+        super(200, 380, 'images/char-cat-girl.png');
     }
 
     moveToDefault() {
@@ -65,12 +70,6 @@ class Player {
             this.y += 80;
         }
     }
-
-    // Draw the player on the screen
-    render() {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    }
-
 }
 
 // Add new enemies
