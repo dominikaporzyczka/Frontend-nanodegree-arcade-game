@@ -84,16 +84,18 @@ var Engine = (function (global) {
                 player.x + (player.width - 20) > enemy.x &&
                 (player.y + 100) < enemy.y + (enemy.height - 26) &&
                 player.y + (player.height - 30) > (enemy.y + 78)) {
-                    
-                player.moveToDefault();  
+
+                player.moveToDefault();
                 showMessage();
             }
         }
     }
 
+    // Create element with message
     const message = doc.createElement('p');
     message.classList.add('message');
 
+    // Show message when lost
     function showMessage() {
         const messages = ['Oooops..', 'Try again!', 'Maybe next time..', 'Do not give up!', 'You are still awesome! Try again :)'];
         message.textContent = messages[Math.floor(Math.random() * messages.length)];
