@@ -94,12 +94,12 @@ var Engine = (function (global) {
     // Create element with message
     const message = doc.createElement('p');
     message.classList.add('message');
+    doc.body.appendChild(message);
 
     // Show message when lost
     function showMessage() {
         const messages = ['Oooops..', 'Try again!', 'Maybe next time..', 'Do not give up!', 'You are still awesome! Try again :)'];
         message.textContent = messages[Math.floor(Math.random() * messages.length)];
-        doc.body.appendChild(message);
     }
 
     function update(dt) {

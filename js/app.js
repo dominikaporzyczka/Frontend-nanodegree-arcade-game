@@ -45,9 +45,9 @@ class Player {
             allEnemies = [];
             this.moveToDefault();
 
-            const messages = ['Good job!', 'Nice!', 'You are awesome!', 'Woooooo!', 'You win!!!'];
+            this.messages = ['Good job!', 'Nice!', 'You are awesome!', 'Woooooo!', 'You win!!!'];
             this.messageParagraph = document.querySelector('.message');
-            this.messageParagraph.textContent = messages[Math.floor(Math.random() * messages.length)];
+            this.messageParagraph.textContent = this.messages[Math.floor(Math.random() * this.messages.length)];
         }
     }
 
